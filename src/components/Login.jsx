@@ -65,9 +65,9 @@ function Login() {
                     label='Password: '
                     placeholder='Enter your password'
                     type='password'
-                    {...register('password'), {
+                    {...register('password', {
                         required: true,
-                    }}
+                    })}
                     />
                     <Button
                     type='submit'

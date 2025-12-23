@@ -1,4 +1,4 @@
-import conf from '../conf/conf'
+import conf from '../config/conf'
 import { Client, ID, Databases, Storage, Query } from "appwrite";
 
 export class Service{
@@ -79,12 +79,12 @@ export class Service{
         }
     }
 
-    async getPosts(quries = [Query.equal('status', 'active')]){
+    async getPosts(queries = [Query.equal('status', 'active')]){
         try {
             return await this.databases.listDocuments({
-                documentId: conf.appwriteDatabaseId,
+                databaseId: conf.appwriteDatabaseId,
                 collectionId: conf.appwriteCollectionId,
-                quries
+                queries
             })
         } catch (error) {
             console.log('Appwrite service : getPosts : error', error)
@@ -133,7 +133,7 @@ export class Service{
 
     async downloadFile(fileId){
         try {
-            return await this.bucket.downloadFile({
+            return this.bucket.getFileDownload({
                 bucketId: conf.appwriteBucketId,
                 fileId: fileId
             })
