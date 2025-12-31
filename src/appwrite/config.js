@@ -124,7 +124,7 @@ export class Service{
             return this.bucket.getFilePreview({
             bucketId: conf.appwriteBucketId,
             fileId: fileId
-        })
+        });
         } catch (error) {
             console.log('Appwrite service : filePreview : error', error)
             return false
