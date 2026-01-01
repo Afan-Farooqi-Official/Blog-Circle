@@ -15,7 +15,7 @@ function App() {
     authService.getCurrentUser()
       .then((userData) => {
         if (userData) {
-          dispatch(login({userData}))
+          dispatch(login(userData))
         } else {
           // no need, or combine login whenever click if not user then logout, in case of user login before and want to logout
           dispatch(logout())

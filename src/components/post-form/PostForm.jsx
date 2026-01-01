@@ -20,6 +20,12 @@ function PostForm({post}) {
     const userData = useSelector((state) => state.auth.userData)
 
     const submit = async (data) => {
+
+        if (!userData) { 
+            console.error("No user logged in yet"); 
+            return; 
+        }
+
         if (post) {
             const file = data.image[0] ? appwriteService.uploadFile(data.image[0]) : null
             if (file) {
